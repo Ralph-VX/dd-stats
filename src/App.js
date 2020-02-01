@@ -143,7 +143,7 @@ class App extends React.Component {
     if (eHitData[dataSet.eHitRate]) {
       const data = eHitData[dataSet.eHitRate];
       data[1] = data[1] + 1;
-      data[0] = data[0] + dataSet.eHit ? 1 : 0;
+      data[0] = data[0] + (dataSet.eHit ? 1 : 0);
       eHitData[dataSet.eHitRate] = data;
     } else {
       eHitData[dataSet.eHitRate] = [dataSet.eHit ? 1 : 0,1];
@@ -152,7 +152,7 @@ class App extends React.Component {
     if (pHitData[dataSet.pHitRate]) {
       const data = pHitData[dataSet.pHitRate];
       data[1] = data[1] + 1;
-      data[0] = data[0] + dataSet.pHit ? 1 : 0;
+      data[0] = data[0] + (dataSet.pHit ? 1 : 0);
       pHitData[dataSet.pHitRate] = data;
     } else {
       pHitData[dataSet.pHitRate] = [dataSet.pHit ? 1 : 0, 1];
@@ -166,7 +166,7 @@ class App extends React.Component {
     if (eHitData[dataSet.eHitRate]) {
       const data = eHitData[dataSet.eHitRate];
       data[1] = data[1] - 1;
-      data[0] = data[0] - dataSet.eHit ? 1 : 0;
+      data[0] = data[0] - (dataSet.eHit ? 1 : 0);
       eHitData[dataSet.eHitRate] = data;
     } else {
       console.log("Something is not correct, as you are trying to undoing non-existing information");
@@ -174,7 +174,7 @@ class App extends React.Component {
     if (pHitData[dataSet.pHitRate]) {
       const data = pHitData[dataSet.pHitRate];
       data[1] = data[1] - 1;
-      data[0] = data[0] - dataSet.pHit ? 1 : 0;
+      data[0] = data[0] - (dataSet.pHit ? 1 : 0);
       pHitData[dataSet.pHitRate] = data;
     } else {
       console.log("Something is not correct, as you are trying to undoing non-existing information");
