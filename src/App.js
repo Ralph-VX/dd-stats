@@ -88,22 +88,28 @@ class DataRow extends React.Component {
 
 class Data extends React.Component {
   render() {
-    const data = this.props.hitData.filter(Boolean);
+    const data = this.props.hitData.slice();
     if (this.props.hitData2) {
-      this.props.hitData2.filter(Boolean).forEach((contents, rate) =>{
-        if (data[rate]) {
-          data[rate][0] += contents[0];
-          data[rate][1] += contents[1];
-        } else {
-          data[rate] = contents;
+      this.props.hitData2.forEach((contents, rate) =>{
+        if (contents) {
+          if (data[rate]) {
+            data[rate][0] += contents[0];
+            data[rate][1] += contents[1];
+          } else {
+            data[rate] = contents;
+          }
         }
       })
     }
     let rateList = data.map((contents, rate) => {
-      return <li key={rate}>
-          <DataRow data={contents} rate={rate} edit={false}/>
-        </li>
-    })
+      if (contents) {
+        return <li key={rate}>
+            <DataRow data={contents} rate={rate} edit={false}/>
+          </li>
+      } else {
+        return null;
+      }
+    }).filter(Boolean);
     return <ul className="dataList">
       {rateList}
     </ul>
