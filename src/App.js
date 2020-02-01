@@ -97,10 +97,12 @@ class Data extends React.Component {
       this.props.hitData2.forEach((contents, rate) =>{
         if (contents) {
           if (data[rate]) {
-            data[rate][0] += contents[0];
-            data[rate][1] += contents[1];
+            const rateData = [data[rate][0], data[rate][1]];
+            rateData[0] += contents[0];
+            rateData[1] += contents[1];
+            data[rate] = rateData;
           } else {
-            data[rate] = contents;
+            data[rate] = contents.slice();
           }
         }
       })
@@ -134,6 +136,7 @@ class App extends React.Component {
           eHitData : []
         }
       }
+      console.log(data);
       this.state = {
         data: data,
         history: [],
@@ -142,6 +145,7 @@ class App extends React.Component {
   }
 
   addDataSet(oldData, dataSet) {
+    console.log(oldData);
     const pHitData = oldData.pHitData.slice();
     const eHitData = oldData.eHitData.slice();
     if (eHitData[dataSet.eHitRate]) {
