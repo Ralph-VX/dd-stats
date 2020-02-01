@@ -27,6 +27,10 @@ class Input extends React.Component {
       this.eHitRate.current.select();
       this.pHit.current.checked = false;
       this.eHit.current.checked = false;
+      this.setState({
+        eHit : false,
+        pHit : false
+      })
   }
 
   handleChange(event) {
